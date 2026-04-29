@@ -1,0 +1,1 @@
+export class CartService{carts=new Map<string,any>(); create(){const id='gc_'+Math.random().toString(36).slice(2,8); const c={id,items:[],total:0}; this.carts.set(id,c); return c;} get(id:string){return this.carts.get(id);} clear(id:string){this.carts.set(id,{id,items:[],total:0}); return this.carts.get(id);} }

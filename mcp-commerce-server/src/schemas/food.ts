@@ -1,0 +1,10 @@
+import { z } from 'zod'; import { Confirmation, Id } from './common.js';
+export const restaurantSearchSchema=z.object({query:z.string().optional(),cuisine:z.string().optional(),min_rating:z.number().min(0).max(5).optional(),max_delivery_time:z.number().int().optional()});
+export const menuSchema=z.object({restaurant_id:Id});
+export const searchMenuSchema=z.object({restaurant_id:Id,query:z.string().min(1)});
+export const createCartSchema=z.object({restaurant_id:Id});
+export const updateCartSchema=z.object({cart_id:Id,op:z.enum(['add','remove','update_qty']),item_id:Id,quantity:z.number().int().min(0).max(20).optional()});
+export const getCartSchema=z.object({cart_id:Id});
+export const applyCouponSchema=z.object({cart_id:Id,code:z.string().min(2)});
+export const placeOrderSchema=z.object({cart_id:Id,user_confirmation:Confirmation,selected_address_id:Id});
+export const orderByIdSchema=z.object({order_id:Id});
