@@ -1,0 +1,7 @@
+import { describe,it,expect } from 'vitest'; import request from 'supertest';
+process.env.VITEST='true'; import app from '../server.js';
+const auth={Authorization:'Bearer dev-token-123'};
+const rpc=(method:string,params:any,id='1')=>({jsonrpc:'2.0',id,method,params});
+describe('food',()=>{it('search restaurant',async()=>{const r=await request(app).post('/mcp/food').set(auth).send(rpc('tools/call',{name:'restaurant_search',arguments:{query:'Biryani'}})); expect(r.body.result.restaurants.length).gt(0);});
+it('menu',async()=>{const r=await request(app).post('/mcp/food').set(auth).send(rpc('tools/call',{name:'get_restaurant_menu',arguments:{restaurant_id:'r1'}})); expect(r.body.result.items.length).gt(0);});
+it('cart+coupon+order confirm',async()=>{const c=await request(app).post('/mcp/food').set(auth).send(rpc('tools/call',{name:'create_cart',arguments:{restaurant_id:'r1'}})); const id=c.body.result.id; await request(app).post('/mcp/food').set(auth).send(rpc('tools/call',{name:'update_cart',arguments:{cart_id:id,op:'add',item_id:'i1',quantity:2}})); const bad=await request(app).post('/mcp/food').set(auth).send(rpc('tools/call',{name:'place_order',arguments:{cart_id:id,selected_address_id:'a1'}})); expect(bad.body.error).toBeTruthy(); const ok=await request(app).post('/mcp/food').set(auth).send(rpc('tools/call',{name:'place_order',arguments:{cart_id:id,selected_address_id:'a1',user_confirmation:true}})); expect(ok.body.result.status).toBe('placed');});});

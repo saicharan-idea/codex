@@ -1,0 +1,1 @@
+{"name":"combined-mcp","description":"Combined tools","endpoint":"/mcp/combined","auth":"bearer","tool_categories":["food","grocery"],"version":"1.1.0","contact":"dev@example.com","legal":"mock only"}

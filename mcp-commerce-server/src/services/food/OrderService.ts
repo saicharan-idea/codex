@@ -1,0 +1,1 @@
+export class OrderService{orders:any[]=[]; place(cart:any,address:string){const o={id:'fo_'+Math.random().toString(36).slice(2,8),cart_id:cart.id,address,status:'placed',total:cart.total}; this.orders.push(o); return o;} list(){return this.orders;} get(id:string){return this.orders.find(o=>o.id===id);} }

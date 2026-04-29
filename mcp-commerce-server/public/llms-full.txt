@@ -1,0 +1,4 @@
+Full MCP docs for agents.
+Use tools/list then tools/call.
+High-risk: food.place_order, grocery.checkout require user_confirmation=true.
+Never execute real payments/orders; mock mode only.

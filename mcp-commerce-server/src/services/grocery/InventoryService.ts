@@ -1,0 +1,2 @@
+import { products } from '../../mocks/groceryData.js';
+export class InventoryService{check(product_id:string,address_id:string,qty:number){const p=products.find(x=>x.id===product_id); if(!p) return false; return ((p.stockByAddress as any)[address_id]||0)>=qty;} substitution(product_id:string){const p=products.find(x=>x.id===product_id); return p?.substitute||null;} price(id:string){return products.find(p=>p.id===id)?.price||0;} }
