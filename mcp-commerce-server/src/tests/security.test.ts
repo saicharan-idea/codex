@@ -1,0 +1,3 @@
+import { describe,it,expect } from 'vitest'; import request from 'supertest'; import { maskPII } from '../logger.js';
+process.env.VITEST='true'; import app from '../server.js';
+describe('security',()=>{it('missing auth',async()=>{const r=await request(app).post('/mcp/food').send({}); expect(r.status).toBe(401);}); it('invalid tool',async()=>{const r=await request(app).post('/mcp/food').set('Authorization','Bearer dev-token-123').send({jsonrpc:'2.0',id:'1',method:'tools/call',params:{name:'bad',arguments:{}}}); expect(r.body.error.code).toBe('TOOL_NOT_FOUND');}); it('mask token',()=>{expect(maskPII('Bearer dev-token-123').includes('123')).toBeTruthy();});});

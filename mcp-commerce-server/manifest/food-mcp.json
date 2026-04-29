@@ -1,0 +1,1 @@
+{"name":"food-mcp","description":"Food tools","endpoint":"/mcp/food","auth":"bearer","tool_categories":["food"],"version":"1.1.0","contact":"dev@example.com","legal":"mock only"}

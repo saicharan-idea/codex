@@ -1,0 +1,4 @@
+MCP Commerce Server
+Endpoints: /mcp/food /mcp/grocery /mcp/combined
+Tools: food ordering, grocery checkout
+Docs: /docs/index.md

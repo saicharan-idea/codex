@@ -1,0 +1,1 @@
+export class OrderService{orders:any[]=[]; checkout(cart:any){const o={id:'go_'+Math.random().toString(36).slice(2,8),status:'placed',items:cart.items,total:cart.total}; this.orders.push(o); return o;} list(){return this.orders;} get(id:string){return this.orders.find(o=>o.id===id);} }

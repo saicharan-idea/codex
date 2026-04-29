@@ -1,0 +1,2 @@
+import { ToolDef } from './types.js';
+export class ToolRegistry{constructor(public tools:Record<string,ToolDef>){} list(){return Object.values(this.tools).map(t=>({name:t.name,description:t.description,domain:t.domain,inputSchema:t.inputSchema,outputSchema:t.outputSchema,isMutating:t.isMutating,requiresAuth:t.requiresAuth,requiresConfirmation:t.requiresConfirmation}));} get(name:string){return this.tools[name];}}

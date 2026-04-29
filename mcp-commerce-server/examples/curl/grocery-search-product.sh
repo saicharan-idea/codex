@@ -1,0 +1,1 @@
+curl -X POST http://localhost:3000/mcp/grocery -H 'Authorization: Bearer dev-token-123' -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0","id":"3","method":"tools/call","params":{"name":"search_products","arguments":{"address_id":"a1","query":"milk"}}}'
