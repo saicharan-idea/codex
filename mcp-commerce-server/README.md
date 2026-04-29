@@ -13,7 +13,6 @@ User/Agent -> JSON-RPC MCP -> Tool Registry -> Domain Services -> In-memory mock
 - POST /mcp/food
 - POST /mcp/grocery
 - POST /mcp/combined
-- GET /events (SSE realtime updates)
 
 ## Setup
 ```bash
@@ -46,7 +45,3 @@ npm run build
 
 ## Replace mocks
 Swap `src/services/*` internals with real provider adapters.
-
-
-## Real-time support
-Use `GET /events` (Server-Sent Events) to receive cart/order/checkout updates emitted by mutating tools.
